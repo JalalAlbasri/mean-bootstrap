@@ -18,27 +18,27 @@ var less = require('gulp-less');
 var multiProcess = require('gulp-multi-process');
 var babel = require('gulp-babel');
 
-gulp.task('default', function() {
+gulp.task('default', function () {
   return gutil.log('Gulp is running!');
 });
 
 gulp.task('default', ['watch']);
 
-gulp.task('watch', function() {
-  watch('public/stylesheets/less/*.less', function() {
-    multiProcess(['build-less'], function() {});
+gulp.task('watch', function () {
+  watch('public/stylesheets/less/*.less', function () {
+    multiProcess(['build-less'], function () {});
   });
 
-  watch('views/templates/*.pug', function() {
+  watch('views/templates/*.pug', function () {
     gulp.start('build-pug-templatecache');
   });
 
-  watch('public/javascripts/src/*.js', function() {
+  watch('public/javascripts/src/*.js', function () {
     gulp.start('build-src');
   });
 });
 
-gulp.task('build-all', function(callback) {
+gulp.task('build-all', function (callback) {
   sequence('build-scrolls', 'build-spells')(callback);
 });
 
@@ -46,40 +46,38 @@ gulp.task('build-all', function(callback) {
  * SCROLLS
  */
 
-gulp.task('build-scrolls', function(callback) {
+gulp.task('build-scrolls', function (callback) {
   sequence('build-less', 'build-css')(callback);
 });
 
-gulp.task('build-less', function() {
+gulp.task('build-less', function () {
   return gulp
     .src('public/stylesheets/less/style.less')
     .pipe(plumber())
     .pipe(less())
-    .on('error', function(err) {
+    .on('error', function (err) {
       gutil.log(err);
       this.emit('end');
     })
-    .pipe(
-      plugins.autoprefixer({
-        browsers: [
-          '> 1%',
-          'last 2 versions',
-          'firefox >= 4',
-          'safari 7',
-          'safari 8',
-          'IE 8',
-          'IE 9',
-          'IE 10',
-          'IE 11'
-        ],
-        cascade: false
-      })
-    )
+    .pipe(plugins.autoprefixer({
+      browsers: [
+        '> 1%',
+        'last 2 versions',
+        'firefox >= 4',
+        'safari 7',
+        'safari 8',
+        'IE 8',
+        'IE 9',
+        'IE 10',
+        'IE 11'
+      ],
+      cascade: false
+    }))
     .pipe(gulp.dest('public/stylesheets/css'))
     .on('error', gutil.log);
 });
 
-gulp.task('build-css', function() {
+gulp.task('build-css', function () {
   var cssFiles = ['public/stylesheets/css/*.css'];
 
   var ignoreBowerComponents = [];
@@ -93,11 +91,9 @@ gulp.task('build-css', function() {
   }
 
   return gulp
-    .src(
-      mainBowerFiles({
-        filter: mainBowerFilesFilter
-      }).concat(cssFiles)
-    )
+    .src(mainBowerFiles({
+      filter: mainBowerFilesFilter
+    }).concat(cssFiles))
     .pipe(filter('**/*.css'))
     .pipe(order(['public/stylesheets/css/style.css']))
     .pipe(concatCss('scrolls.min.css'))
@@ -110,15 +106,15 @@ gulp.task('build-css', function() {
  * SPELLS
  */
 
-gulp.task('build-spells', function(callback) {
+gulp.task('build-spells', function (callback) {
   sequence('build-pug-templatecache', 'build-src', 'build-js')(callback);
 });
 
-gulp.task('build-pug-templatecache', function(callback) {
+gulp.task('build-pug-templatecache', function (callback) {
   sequence('build-pug', 'build-templatecache')(callback);
 });
 
-gulp.task('build-pug', function() {
+gulp.task('build-pug', function () {
   var templateFiles = ['views/templates/*.pug'];
   return gulp
     .src(templateFiles)
@@ -127,20 +123,18 @@ gulp.task('build-pug', function() {
     .on('error', gutil.log);
 });
 
-gulp.task('build-templatecache', function() {
+gulp.task('build-templatecache', function () {
   return gulp
     .src('views/html/*.html')
-    .pipe(
-      templateCache('templates.js', {
-        standalone: true,
-        module: 'rpTemplates'
-      })
-    )
+    .pipe(templateCache('templates.js', {
+      standalone: true,
+      module: 'rpTemplates'
+    }))
     .pipe(gulp.dest('public/javascripts/src'))
     .on('error', gutil.log);
 });
 
-gulp.task('build-src', function() {
+gulp.task('build-src', function () {
   return gulp
     .src('public/javascripts/src/*.js')
     .pipe(babel())
@@ -148,7 +142,7 @@ gulp.task('build-src', function() {
     .on('error', gutil.log);
 });
 
-gulp.task('build-js', function() {
+gulp.task('build-js', function () {
   var jsFiles = [
     'public/javascripts/build/*.js',
     'public/javascripts/resources/*.js'
@@ -165,11 +159,9 @@ gulp.task('build-js', function() {
   }
 
   return gulp
-    .src(
-      mainBowerFiles({
-        filter: mainBowerFilesFilter
-      }).concat(jsFiles)
-    )
+    .src(mainBowerFiles({
+      filter: mainBowerFilesFilter
+    }).concat(jsFiles))
     .pipe(filter('**/*.js'))
     .pipe(stripDebug())
     .pipe(concat('spells.min.js'))
