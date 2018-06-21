@@ -78,7 +78,7 @@ gulp.task('build-less', function () {
 });
 
 gulp.task('build-css', function () {
-  var cssFiles = ['public/stylesheets/css/*.css'];
+  var cssFiles = ['public/stylesheets/css/*.css', 'bower_components/bootstrap/dist/css/bootstrap.min.css'];
 
   var ignoreBowerComponents = [];
 
@@ -145,7 +145,8 @@ gulp.task('build-src', function () {
 gulp.task('build-js', function () {
   var jsFiles = [
     'public/javascripts/build/*.js',
-    'public/javascripts/resources/*.js'
+    'public/javascripts/resources/*.js',
+    'bower_components/bootstrap/dist/js/bootstrap.min.js'
   ];
   var ignoreBowerComponents = [];
 
