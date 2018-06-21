@@ -1,6 +1,9 @@
 node_modules/
 bower_components/
-app/build/
+public/javascripts/build/
+public/javascripts/dist/
+public/stylesheets/dist/
+views/html/
 tmp
 .DS_Store
 .env

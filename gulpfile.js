@@ -130,7 +130,7 @@ gulp.task('build-templatecache', function () {
       standalone: true,
       module: 'templates'
     }))
-    .pipe(gulp.dest('public/javascripts/src'))
+    .pipe(gulp.dest('public/javascripts/build/'))
     .on('error', gutil.log);
 });
 
