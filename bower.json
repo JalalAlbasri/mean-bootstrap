@@ -1,0 +1,31 @@
+{
+  "name": "mean-bootstrap",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Jalal Albasri <jalal.albasri@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.7.2",
+    "angular-route": "^1.7.2",
+    "angular-loader": "^1.7.2",
+    "angular-sanitize": "^1.7.2",
+    "angular-cookies": "^1.7.2",
+    "angular-aria": "^1.7.2",
+    "angular-resource": "^1.7.2",
+    "angular-messages": "^1.7.2",
+    "angular-animate": "^1.7.2",
+    "jquery": "^3.3.1",
+    "bootstrap": "^4.1.1"
+  }
+}
