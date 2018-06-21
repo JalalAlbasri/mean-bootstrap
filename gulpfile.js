@@ -128,7 +128,7 @@ gulp.task('build-templatecache', function () {
     .src('views/html/*.html')
     .pipe(templateCache('templates.js', {
       standalone: true,
-      module: 'rpTemplates'
+      module: 'templates'
     }))
     .pipe(gulp.dest('public/javascripts/src'))
     .on('error', gutil.log);

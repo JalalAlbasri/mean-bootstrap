@@ -2,18 +2,16 @@
 
 angular.module('meanApp', [
   'ngRoute',
-  'appCtrl'
+  'templates'
 ])
-  .config(['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) => {
+  .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
     $routeProvider.when('/', {
       templateUrl: 'index.html',
       controller: 'appCtrl',
-      controllerAs: 'appCtrl'
+      controllerAs: 'app'
     });
 
     $locationProvider.html5Mode(true);
+  }]).controller('appCtrl', ['$scope', function ($scope) {
+    this.greeting = 'hello world';
   }]);
-
-angular.module('meanApp').controller('appCtrl', ['$scope', ($scope) => {
-  this.greeting = 'hello world';
-}]);
