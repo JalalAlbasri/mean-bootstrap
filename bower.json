@@ -1,12 +1,12 @@
 {
-  "name": "mean-bootstrap",
+  "name": "caveman-minecraft",
   "description": "",
   "main": "",
   "authors": [
     "Jalal Albasri <jalal.albasri@gmail.com>"
   ],
   "license": "MIT",
-  "homepage": "",
+  "homepage": "http://www.cavemanminecraft.com",
   "private": true,
   "ignore": [
     "**/.*",

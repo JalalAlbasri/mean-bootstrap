@@ -9,5 +9,5 @@ angular.module('meanApp', ['ngRoute', 'templates']).config(['$routeProvider', '$
 
   $locationProvider.html5Mode(true);
 }]).controller('appCtrl', ['$scope', function ($scope) {
-  this.greeting = 'hello world';
+  this.greeting = 'caveman minecraft';
 }]);

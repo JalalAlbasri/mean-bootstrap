@@ -23,7 +23,7 @@
     "constructor-super": "warn",
     "valid-typeof": "warn",
     "func-names": 0,
-    "semi": [2, "always"],
+    "semi": [2, "never"],
     "no-console": "off",
     "no-plusplus": "off",
     "max-len": "off",

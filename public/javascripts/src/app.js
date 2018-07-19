@@ -13,5 +13,5 @@ angular.module('meanApp', [
 
     $locationProvider.html5Mode(true);
   }]).controller('appCtrl', ['$scope', function ($scope) {
-    this.greeting = 'hello world';
+    this.greeting = 'caveman minecraft';
   }]);

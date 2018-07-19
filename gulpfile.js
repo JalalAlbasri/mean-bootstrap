@@ -26,15 +26,18 @@ gulp.task('default', ['watch']);
 
 gulp.task('watch', function () {
   watch('public/stylesheets/less/*.less', function () {
-    multiProcess(['build-less'], function () {});
+    // multiProcess(['build-less'], function () {});
+    multiProcess(['build-all'], function () {});
   });
 
   watch('views/templates/*.pug', function () {
-    gulp.start('build-pug-templatecache');
+    // gulp.start('build-pug-templatecache');
+    multiProcess(['build-all'], function () {});
   });
 
   watch('public/javascripts/src/*.js', function () {
-    gulp.start('build-src');
+    // gulp.start('build-src');
+    multiProcess(['build-all'], function () {});
   });
 });
 
