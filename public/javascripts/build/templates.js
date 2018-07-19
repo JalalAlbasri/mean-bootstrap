@@ -1,5 +1,1 @@
-'use strict';
-
-angular.module('templates', []).run(['$templateCache', function ($templateCache) {
-  $templateCache.put('index.html', '<div class="app"><h1>{{app.greeting}}</h1></div>');
-}]);
+angular.module('templates', []).run(['$templateCache', function($templateCache) {$templateCache.put('index.html','<div class="row-align-items-center"><div class="col-align-self-center"><h2>{{app.greeting}}</h2><p>Server Status: {{app.serverState}}</p><div class="buttons" ng-if="app.serverState !== \'\'"><button class="btn btn-success btn-lg" type="button" ng-click="app.startServer()" ng-disabled="app.serverRunning" ng-class="{disabled: app.serverState == \'running\'}">Start Server</button><br/><br/><button class="btn btn-danger btn-lg" type="button" ng-click="app.stopServer()" ng-disabled="!app.serverRunning" ng-class="{disabled: app.serverStatus == \'stopped\'}">Stop Server</button></div></div></div>');}]);

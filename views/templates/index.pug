@@ -1,2 +1,19 @@
-.app
-  h1 {{app.greeting}}
+.row-align-items-center
+  .col-align-self-center
+    h2 {{app.greeting}}
+    p Server Status: {{app.serverState}}
+    .buttons(ng-if="app.serverState !== ''")
+      button.btn.btn-success.btn-lg(
+        type="button" 
+        ng-click="app.startServer()" 
+        ng-disabled="app.serverRunning"
+        ng-class="{disabled: app.serverState == 'running'}"
+      ) Start Server
+      br
+      br
+      button.btn.btn-danger.btn-lg(
+        type="button"
+        ng-click="app.stopServer()" 
+        ng-disabled="!app.serverRunning"
+        ng-class="{disabled: app.serverStatus == 'stopped'}"
+      ) Stop Server
